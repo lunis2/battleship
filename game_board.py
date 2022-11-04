@@ -7,17 +7,17 @@ FIRE = "X"
 HIT = "*"
 
 
-class OutOfBoundariesException(BaseException):
+class OutOfBoundariesException(Exception):
     def __str__(self):
         return "Out of boundaries"
 
 
-class AlreadyUsedException(BaseException):
+class AlreadyUsedException(Exception):
     def __str__(self):
         return "These coordinates were used previously"
 
 
-class ShipPositioningException(BaseException):
+class ShipPositioningException(Exception):
     def __str__(self):
         return "Couldn't position the ship"
 
