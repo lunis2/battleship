@@ -23,6 +23,7 @@ class ShipPositioningException(BaseException):
 
 
 class Board:
+    """Board class for board itself, ship placing, and strike check"""
     def __init__(self, size):
         self.size = size
         self.board = []
@@ -34,10 +35,12 @@ class Board:
             self.board.append([SEA] * self.size)
 
     def print_board(self):
+        """Printing the game board"""
         for row in self.board:
             print(" | ".join(row))
 
     def place_ship(self, ship, computer):
+        """Single ship placing"""
         for x in ship.dots:
             if x in self.taken or self.out_of_board(x):
                 raise ShipPositioningException()
@@ -49,6 +52,7 @@ class Board:
         self.contour(ship, False)
 
     def place_ships(self, ships, size, computer):
+        """Randomized ships placing"""
         ship_count = 0
         for s in ships:
             for _ in range(0, 2000):
@@ -64,6 +68,7 @@ class Board:
             self.place_ships(ships, size, computer)
 
     def out_of_board(self, dot) -> bool:
+        """Out of board check"""
         return not ((0 <= dot.x < self.size) and (0 <= dot.y < self.size))
 
     def contour(self, ship, verb=False):
@@ -85,6 +90,7 @@ class Board:
                     self.taken.append(dot)
 
     def strike(self, dot, comp) -> bool:
+        """Checks strikes"""
         if self.out_of_board(dot):
             raise OutOfBoundariesException()
 

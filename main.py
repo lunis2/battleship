@@ -8,24 +8,26 @@ SHIPS = [3, 2, 2, 1, 1, 1, 1]
 
 
 class Game:
-
-    def __init__(self, player_b, computer_b) -> None:
+    """Main class for the game"""
+    def __init__(self, player_b, computer_b):
         self.game_on = True
         self.player_board = player_b
         self.computer_board = computer_b
 
     def game_boards(self):
+        """Printing both boards"""
         print("User board:")
         self.player_board.print_board()
         print("Computer board:")
         self.computer_board.print_board()
 
     def player_turn(self):
+        """Player turn logic"""
         print("Player turn:")
         while True:
-            answer = input("Type coordinates: x y: ").split()
+            answer = input("Type coordinates 0 to 5 as: x y: ").split()
             if len(answer) != 2:
-                print("Enter coordinates as: x y: ")
+                print("Enter coordinates 0 to 5 as: x y: ")
                 continue
             try:
                 x = int(answer[0])
@@ -43,8 +45,10 @@ class Game:
                 print(e)
 
     def computer_turn(self):
+        """Computer turn logic"""
         dot = Dot(randint(0, 5), randint(0, 5))
-        print(f"Computer turn: {dot}")
+        # print(f"Computer turn: {dot}")
+
         try:
             return False if player_board.strike(dot, False) else True
 
@@ -54,6 +58,7 @@ class Game:
             print(e)
 
     def start_game(self):
+        """Game start method"""
         player = True
         print("**********************")
         print("***   Battleship   ***")

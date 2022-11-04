@@ -1,4 +1,5 @@
 class Dot:
+    """A two dimensional dot class"""
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -11,6 +12,7 @@ class Dot:
 
 
 class Ship:
+    """Shipyard class"""
     def __init__(self, start_point, ship_len, orientation) -> None:
         self.start_point = start_point
         self.ship_len = ship_len
@@ -19,6 +21,7 @@ class Ship:
 
     @property
     def dots(self) -> list:
+        """Returns all the ship dots"""
         ship_dots = []
         for i in range(self.ship_len):
             pos_x = self.start_point.x
